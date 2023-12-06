@@ -9,7 +9,7 @@ namespace OasisTeleport
 {
     public class OasisPlugin : RocketPlugin<OasisConfiguration>
     {
-        public static string version = "1.0.0.1";
+        public static string version = "1.0.0.2";
         public static OasisPlugin Instance;
 
         public override TranslationList DefaultTranslations
@@ -18,42 +18,39 @@ namespace OasisTeleport
             {
                 return new TranslationList
                 {
-                    { "tpa_send_help", "[Oasis] /tpa (playerName) - Odešle žádost o teleport." },
-                    { "tpa_accept_help", "[Oasis] /tpa accept - Přijme žádost o teleport." },
-                    { "tpa_deny_help", "[Oasis] /tpa deny - Zamítne žádost o teleport." },
-                    { "tpa_abort_help", "[Oasis] /tpa abort - Zruší žádost o teleport." },
-                    { "tpa_nopermission", "[Oasis] Nemáš oprávnění na tento příkaz." },
-                    { "tpa_playerNotFound", "[Oasis] Tento hráč nebyl nalezen!" },
-                    { "tpa_targetInCar", "[Oasis] Teleport zrušen, hráč je v autě." },
-                    { "tpa_playerInCar", "[Oasis] Teleport zrušen, jsi v autě." },
-                    { "tpa_cooldown", "[Oasis] Můžeš se zase teleportovat za {0} sekund." }, 
-                    { "tpa_delay", "[Oasis] Teleportnuti za {0} sekund." }, 
-                    { "tpa_cooldown_error", "[Oasis] Žádost můžeš odesílat každých {0} sekund." }, 
-                    { "tpa_bleeding_error", "[Oasis] Krvacíš až přestaneš můžeš se zase teleportovat!" },
-                    { "tpa_hurt_error", "[Oasis] Byl si zrovna zraněn nemůžeš se teleportovat!" },
-                    { "tpa_help", "[Oasis] Pomocí TPA se můžeš teleportnou na jiného hráče." },
-                    { "tpa_already_teleporting", "[Oasis] Už se teleportuješ." },
-                    { "request_success", "[Oasis] Teleportaval jsi se úspěšně!" },
-                    { "request_accepted", "[Oasis] Přijmul jsi žádost od {0}!" }, 
-                    { "request_denied", "[Oasis] Zamítnul jsi žádost od {0}!" },
-                    { "request_accepted_1", "[Oasis] {0} přijmul tvojí žádost!" }, 
-                    { "request_accepted_2", "[Oasis] {0} přijmul tvojí žádost a budeš teleportnut za {1} sekund." },
-                    { "request_accepted_3", "[Oasis] Přijmul jsi žádost od {0}, bude teleportován za {1} sekund." }, 
-                    { "request_denied_1", "[Oasis] {0} odmítnul tvoji žádost!" },
-                    { "request_sent", "[Oasis] Odeslal jsi žádost hráči {0}" },
-                    { "request_sent_1", "[Oasis] {0} ti odelslal žádost o teleport, /tpa accept pro přijmutí!" },
-                    { "request_pending", "[Oasis] Už si jednou odeslal žádost tomuto hráči." },
-                    { "request_none", "[Oasis] Nemáš žádné žádosti o teleport!" },
-                    { "request_abort", "[Oasis] Zrušil si žádost o teleport." },
-                    { "home_disabled", "[Oasis] Tento příkaz je vypnut." },
-                    { "home_no_bed", "[Oasis] Nemáš žádnou postel kam se můžeš teleportovat." },
-                    { "home_in_vehicle", "[Oasis] V autě se teleportovat nemůžeš." },
-                    { "home_success", "[Oasis] Byl si teleportován na postel." },
-                    { "home_bed_found", "[Oasis] Postel nalezena, teleportuji za {0} sekund." },
-                    { "home_cooldown", "[Oasis] Teleport můžeš zase použít za {0} sekund." },
-                    { "home_died", "[Oasis] Zemřel si dřív než jsem tě mohl teleportovat." },
-                    { "home_hurt", "[Oasis] Teleport zrušen, zranil si se mezitím co si se teleportovat." },
-                    { "home_nopermission", "[Oasis] Nemáš oprávnění na tento příkaz." },
+                    { "tpa_send_help": "[Oasis] /tpa (playerName) - Sends a teleport request." },
+                    { "tpa_accept_help": "[Oasis] /tpa accept - Accepts a teleport request." },
+                    { "tpa_deny_help": "[Oasis] /tpa deny - Denies a teleport request." },
+                    { "tpa_abort_help": "[Oasis] /tpa abort - Cancels a teleport request." },
+                    { "tpa_nopermission": "[Oasis] You don't have permission for this command." },
+                    { "tpa_playerNotFound": "[Oasis] This player was not found!" },
+                    { "tpa_targetInCar": "[Oasis] Teleport canceled, player is in a car." },
+                    { "tpa_playerInCar": "[Oasis] Teleport canceled, you are in a car." },
+                    { "tpa_cooldown": "[Oasis] You can teleport again in {0} seconds." },
+                    { "tpa_delay": "[Oasis] Teleporting in {0} seconds." },
+                    { "tpa_cooldown_error": "[Oasis] You can send a request every {0} seconds." },
+                    { "tpa_bleeding_error": "[Oasis] You are bleeding, you can't teleport until you stop!" },
+                    { "tpa_hurt_error": "[Oasis] You were just injured, you can't teleport!" },
+                    { "tpa_help": "[Oasis] With TPA, you can teleport to another player." },
+                    { "tpa_already_teleporting": "[Oasis] You are already teleporting." },
+                    { "request_success": "[Oasis] You have successfully teleported!" },
+                    { "request_accepted": "[Oasis] You have accepted a request from {0}!" },
+                    { "request_denied": "[Oasis] You have denied a request from {0}!" },
+                    { "request_accepted_1": "[Oasis] {0} accepted your request!" },
+                    { "request_accepted_2": "[Oasis] {0} accepted your request and you will be teleported in {1} seconds." },
+                    { "request_accepted_3": "[Oasis] You accepted a request from {0}, and will be teleported in {1} seconds." },
+                    { "request_denied_1": "[Oasis] {0} denied your request!" },
+                    { "request_sent": "[Oasis] You have sent a request to the player {0}" },
+                    { "request_sent_1": "[Oasis] {0} sent you a teleport request, /tpa accept to accept!" },
+                    { "request_pending": "[Oasis] You have already sent a request to this player once." },
+                    { "request_none": "[Oasis] You have no teleport requests!" },
+                    { "request_abort": "[Oasis] You have canceled the teleport request." },
+                    { "home_disabled": "[Oasis] This command is disabled." },
+                    { "home_no_bed": "[Oasis] You have no bed to teleport to." },
+                    { "home_in_vehicle": "[Oasis] You cannot teleport while in a vehicle." },
+                    { "home_success": "[Oasis] You have been teleported to your bed." },
+                    { "home_bed_found": "[Oasis] Bed found, teleporting in {0} seconds." },
+                    { "home_cooldown": "[Oasis] You can teleport again in {0} seconds." }
                 };
             }
         }
